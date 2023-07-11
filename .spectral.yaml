@@ -2,3 +2,22 @@
 extends:
   - "spectral:oas" # https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules
   - ".spectral-rulesets/public-rulesets/url-style-guidelines/.spectral.json" # https://apistylebook.stoplight.io/docs/url-guidelines
+
+# Rule configuration
+rules:
+  operation-tags: "off"
+  server-has-api: "off"
+  path-parameters-snake-case: "off"
+
+# Rule overrides
+overrides:
+  - files:
+      - "reference/Demo.yaml#/paths/~1v2.1~1users~1{userId}"
+      - "reference/Demo.yaml#/paths/~1user"
+    rules:
+      resource-names-plural: "off"
+
+  - files:
+      - "reference/Demo.yaml#/paths/~1v2.1~1users~1{userId}"
+    rules:
+      path-casing: "off"

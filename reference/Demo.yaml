@@ -4,10 +4,12 @@ x-stoplight:
 info:
   title: Demo
   version: '1.0'
+  contact: {}
+  description: Demo API
 servers:
   - url: 'http://localhost:3000'
 paths:
-  '/users/{userId}':
+  '/v2.1/users/{userId}':
     parameters:
       - schema:
           type: integer
