@@ -1,4 +1,4 @@
-# spectral-demo
+# spectral-rule-override-bug
 
 This project demonstrates a recent bug that was introduced to Spectral where rule overrides are not being honored.
 
@@ -22,8 +22,8 @@ At the time of initial publishing, Spectral version `6.8.0` was installed.
 2. Clone this repository and `cd` into it:
 
 ```Shell
-git clone https://github.com/br-tyler-milner/spectral-demo.git
-cd spectral-demo
+git clone https://github.com/br-tyler-milner/spectral-rule-override-bug.git
+cd spectral-rule-override-bug
 ```
 
 3. Run Spectral against the OpenAPI specification:
