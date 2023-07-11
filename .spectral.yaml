@@ -1,0 +1,4 @@
+# Import publicly available style guides
+extends:
+  - "spectral:oas" # https://meta.stoplight.io/docs/spectral/4dec24461f3af-open-api-rules
+  - ".spectral-rulesets/public-rulesets/url-style-guidelines/.spectral.json" # https://apistylebook.stoplight.io/docs/url-guidelines
