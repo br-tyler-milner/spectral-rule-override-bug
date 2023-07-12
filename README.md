@@ -2,6 +2,10 @@
 
 This project demonstrates a recent bug that was introduced to Spectral where rule overrides are not being honored.
 
+## Current Status
+
+**SOLVED** - see [The Fix](./README.md#the-fix) below.
+
 ## Steps to Reproduce
 
 1. Install spectral on your machine using [npm](https://www.npmjs.com):
@@ -78,3 +82,24 @@ In my pipeline, Spectral is locked to version `6.6.0`, however Spectral's `cli` 
 ```
 
 Furthermore, I was initially unable to reproduce this issue locally due to the fact that Spectral was already installed on my machine. After reinstalling spectral, I was able to reproduce the issue that my build pipeline was experiencing (Spectral is installed for each run of the build pipeline). This again points to one of Spectral's dependencies having been updated resulting in the updated (broken) version being used during a fresh Spectral installation.
+
+## The Fix
+
+In order to fix this, all special characters in the override path URI now need to be percent-encoded. In this particular case, the `{` `}` curly braces need to be percent-encoded as `%7B` and `%7D`. Applying the fix to `.spectral.yaml` results in rule `overrides` that look like this:
+
+```yaml
+# Rule overrides
+overrides:
+  - files:
+      - "reference/Demo.yaml#/paths/~1v2.1~1users~1%7BuserId%7D"
+      - "reference/Demo.yaml#/paths/~1user"
+    rules:
+      resource-names-plural: "off"
+
+  - files:
+      - "reference/Demo.yaml#/paths/~1v2.1~1users~1%7BuserId%7D"
+    rules:
+      path-casing: "off"
+```
+
+See [this issue](https://github.com/stoplightio/spectral/issues/2505#issuecomment-1631994542) for more information about the fix.
